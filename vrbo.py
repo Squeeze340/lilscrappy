@@ -22,11 +22,16 @@ driver = webdriver.Chrome()
 # driver = webdriver.Chrome(service=service_object)
 
 # Target URL
-driver.get("https://www.tripadvisor.com/")
-item = driver.find_element(By.ID, "lithium-root")
-print(item)
+driver.get("https://www.tripadvisor.com/ShowForum-g147400-i171-U_S_Virgin_Islands.html")
+# item = driver.find_elements(By.CLASS_NAME, "typeahead-SINGLE_SEARCH_HER0")
 # item.send_keys("st john")
-# button = driver.find_element(By.ID, "SEARCH_BUTTON_CONTENT")
+table = driver.find_element(By.ID, "SHOW_FORUMS_TABLE")
+
+link = table.find_elements(By.XPATH, "//tbody[1]/tr[]/td[3]/b/a")
+# ************ DO NOT TOUCH ABOVE ***********
+print(link[0].text)
+# rows = body[0].find_elements(By.XPATH, "/")
+# print(rows)
 # button[0].click()
 # driver.implicitly_wait(7)
 # SCROLL_PAUSE_TIME = 0.5
@@ -41,6 +46,8 @@ print(item)
 #while True:
     # Scroll down to bottom
     # driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+
 
     # Wait to load page
      #time.sleep(SCROLL_PAUSE_TIME)
