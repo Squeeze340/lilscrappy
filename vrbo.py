@@ -23,7 +23,8 @@ driver = webdriver.Chrome()
 
 # Target URL
 driver.get("https://www.tripadvisor.com/")
-# item = driver.find_element(By.ID, "typeahead_results")
+item = driver.find_element(By.ID, "lithium-root")
+print(item)
 # item.send_keys("st john")
 # button = driver.find_element(By.ID, "SEARCH_BUTTON_CONTENT")
 # button[0].click()
