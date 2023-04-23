@@ -1,6 +1,6 @@
 #from selenium import webdriver
 #from datetime import time
-#import time
+import time
 
 #driver = webdriver.Chrome()
 #url = "https://www.ilanlyfe.vom"
@@ -25,18 +25,36 @@ driver = webdriver.Chrome()
 driver.get("https://www.tripadvisor.com/ShowForum-g147400-i171-U_S_Virgin_Islands.html")
 # item = driver.find_elements(By.CLASS_NAME, "typeahead-SINGLE_SEARCH_HER0")
 # item.send_keys("st john")
-table = driver.find_element(By.ID, "SHOW_FORUMS_TABLE")
 
+#  Create a posts_list where we will store the posts
+post_list = []
+
+#  Loop through all the posts and get the needed information
 for i in range(24):
-    # ************ DO NOT TOUCH ABOVE ***********
+    table = driver.find_element(By.ID, "SHOW_FORUMS_TABLE")
     if i == 0: 
         continue
+    # get the link element and click it
     topic = f"//tbody[1]/tr[{i}]/td[3]/b/a"
     elements = table.find_elements(By.XPATH, topic)
     if len(elements)== 0:
         continue
+
+    elements[0].click()
+    # get the information from the post and create a post object\
+    # try:
+    elements = driver.find_elements(By.XPATH, "//span[@class='topTitleText']")
     print(elements[0].text)
-    # ********** DO NOT TOUCH ABOVE ********
+    driver.back()
+    # except: 
+    #     print("had an error")
+    # header = elements[0].text
+    # adding the post's information to it. 
+
+    # add the post object to the posts_list
+
+    # go back to the country's forum page and continue 
+    
 # next_page = driver.find_element(By.CLASS_NAME "paging taLnk")
 # next_page = driver.find_element(By.ID , "pager_top2")
 # next_page.click()
