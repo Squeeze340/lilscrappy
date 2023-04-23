@@ -27,16 +27,25 @@ driver.get("https://www.tripadvisor.com/ShowForum-g147400-i171-U_S_Virgin_Island
 # item.send_keys("st john")
 table = driver.find_element(By.ID, "SHOW_FORUMS_TABLE")
 
-link = table.find_elements(By.XPATH, "//tbody[1]/tr[]/td[3]/b/a")
-# ************ DO NOT TOUCH ABOVE ***********
-print(link[0].text)
-# rows = body[0].find_elements(By.XPATH, "/")
-# print(rows)
-# button[0].click()
+for i in range(24):
+    # ************ DO NOT TOUCH ABOVE ***********
+    if i == 0: 
+        continue
+    topic = f"//tbody[1]/tr[{i}]/td[3]/b/a"
+    elements = table.find_elements(By.XPATH, topic)
+    if len(elements)== 0:
+        continue
+    print(elements[0].text)
+    # ********** DO NOT TOUCH ABOVE ********
+# next_page = driver.find_element(By.CLASS_NAME "paging taLnk")
+# next_page = driver.find_element(By.ID , "pager_top2")
+# next_page.click()
+
+
 # driver.implicitly_wait(7)
 # SCROLL_PAUSE_TIME = 0.5
 
-#from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support.ui import WebDriverWait
 #from selenium.webdriver.support import expected_conditions as EC
 
 #WebDriverWait(driver, 14).until(EC.presence_of_element_located(("Waypoint8")))
