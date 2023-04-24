@@ -36,15 +36,15 @@ for i in range(24):
         continue
     # get the link element and click it
     topic = f"//tbody[1]/tr[{i}]/td[3]/b/a"
-    elements = table.find_elements(By.XPATH, topic)
-    if len(elements)== 0:
+    topic = table.find_topic(By.XPATH, topic)
+    if len(topic)== 0:
         continue
 
-    elements[0].click()
+    topic[0].click()
     # get the information from the post and create a post object\
     # try:
-    elements = driver.find_elements(By.XPATH, "//span[@class='topTitleText']")
-    print(elements[0].text)
+    topic = driver.find_elements(By.XPATH, "//span[@class='topTitleText']")
+    print(topic[0].text)
     driver.back()
     # except: 
     #     print("had an error")
